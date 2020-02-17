@@ -9,6 +9,8 @@ const createHTMLNode = (tag, attrs, inner) => {
 
 const slug = text => text.trim().split(' ').map(el => el.toLowerCase()).join('-');
 
+const columns = ['ID', 'Full Name', 'Position', 'Tech', 'Exp', 'Sex', 'Salary'];
+
 const renderHeaderNode = () => {
     const logo = createHTMLNode ('div', [{name: 'class', value:['header-info']}], [createHTMLNode ('p', [{name: 'id', value:['pagesInfo']}], null)]);
     const inp = createHTMLNode ('div', [{name: 'class', value:['form-group']}], [
