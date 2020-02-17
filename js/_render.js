@@ -23,9 +23,9 @@ const renderHeaderNode = () => {
 };
 
 const renderMainSectionNode = () => {
-    const outpAuth = createHTMLNode ('div', [{name: 'id', value:['outputAuthorization']}], null);
+    const outpPagin = createHTMLNode ('div', [{name: 'id', value:['outputPagination']}, {name: 'class', value: ['pagination-wrap']}], null);
     const outpData = createHTMLNode ('div', [{name: 'id', value:['outputData']}], null);
-    const col = createHTMLNode ('div', [{name: 'class', value:['col']}], [outpAuth ,outpData])
+    const col = createHTMLNode ('div', [{name: 'class', value:['col']}], [outpData, outpPagin])
     const row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
     const container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
     const main = createHTMLNode ('main', [], [container]);
@@ -56,13 +56,26 @@ const renderTableNode = (headCols, dataRows) => {
     const title = createHTMLNode('div', [{ name: 'class', value: ['table-title']}], [
         createHTMLNode('h1', [], 'Staff table')
     ]);
+    const div = createHTMLNode('div', [{ name: 'class', value: ['table-responsive-sm'] }], [title, table]);
     const container = createHTMLNode('div', [{ name: 'class', value: ['container'] }], [
         createHTMLNode('div', [{ name: 'class', value: ['row'] }], [
-            createHTMLNode('div', [{ name: 'class', value: ['col-12'] }], [title, table])
+            createHTMLNode('div', [{ name: 'class', value: ['col'] }], [div])
         ]),
     ]);
     document.getElementById('outputData').appendChild(container);
 }
+
+const renderPaginationButtons = () => {
+    const nav = createHTMLNode('nav', [{name: 'aria-label', value: ['Page navigation example'] }], [
+        createHTMLNode('ul', [{name: 'class', value: ['pagination', 'justify-content-center'] }], [
+            createHTMLNode('li', [{name: 'class', value: ['page-item', 'disabled']}, {name: 'id', value: ['pagePrev']}], [
+                createHTMLNode('a', [{name: 'class', value: ['page-link']}, {name: 'href', value: ['#']}], 'Previous')]),
+            createHTMLNode('li', [{name: 'class', value: ['page-item', 'disabled']}, {name: 'id', value: ['pageNext']}], [
+                createHTMLNode('a', [{name: 'class', value: ['page-link']}, {name: 'href', value: ['#']}], 'Next')]),
+        ])
+    ]);
+    document.getElementById('outputPagination').appendChild(nav);
+};
 
 const renderSpinner = () => {
     const div = createHTMLNode ('div', [{name: 'class', value:['spinner-border', 'text-info']}, {name: 'role', value:['status']}], [
