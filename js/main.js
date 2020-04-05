@@ -24,7 +24,7 @@ const updatePaginationInfo = res => {
     res.data.info.next ? btnPageNext.classList.remove('disabled') : btnPageNext.classList.add('disabled');
 }
 
-const getDataFromAPI = (url = `https://thawing-depths-65790.herokuapp.com/api`) => {
+const getDataFromAPI = (url = `https://salary-server.herokuapp.com/api`) => {
     document.getElementById('outputData').innerHTML = '';
     renderSpinner();
     axios
@@ -40,9 +40,8 @@ const getDataFromAPI = (url = `https://thawing-depths-65790.herokuapp.com/api`) 
         .catch(error => console.log('Error in main Promise', error));
     };
 
-selectPerPage.addEventListener('change', () => getDataFromAPI(`https://thawing-depths-65790.herokuapp.com/api?perPage=${selectPerPage.value}`));
-btnPagePrev.addEventListener('click', () => info.prev ? getDataFromAPI(`https://thawing-depths-65790.herokuapp.com${info.prev}&perPage=${selectPerPage.value}`) : null);
-btnPageNext.addEventListener('click', () => info.next ? getDataFromAPI(`https://thawing-depths-65790.herokuapp.com${info.next}&perPage=${selectPerPage.value}`) : null);
+selectPerPage.addEventListener('change', () => getDataFromAPI(`https://salary-server.herokuapp.com/api?perPage=${selectPerPage.value}`));
+btnPagePrev.addEventListener('click', () => info.prev ? getDataFromAPI(`https://salary-server.herokuapp.com${info.prev}&perPage=${selectPerPage.value}`) : null);
+btnPageNext.addEventListener('click', () => info.next ? getDataFromAPI(`https://salary-server.herokuapp.com${info.next}&perPage=${selectPerPage.value}`) : null);
 
 getDataFromAPI();
-

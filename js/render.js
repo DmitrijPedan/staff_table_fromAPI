@@ -7,6 +7,7 @@ const createHTMLNode = (tag, attrs, inner) => {
     return element;
 };
 
+
 const slug = text => text.trim().split(' ').map(el => el.toLowerCase()).join('-');
 
 const columns = ['ID', 'Full Name', 'Position', 'Tech', 'Exp', 'Sex', 'Salary'];
